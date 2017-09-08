@@ -27,45 +27,8 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-
-        }
-
-        public void Versus()//Switch case to handle player vs AI or player vs player
-        {
-            Console.WriteLine("Rock, Paper, Scissors, Lizard, Spock!!\nPlay Single Player or 2 Player?\nEnter '1' For Single Player, '2' For 2 Player");
-            string option = Console.ReadLine();
-            switch (option)
-            {
-                case "1":
-                    Console.WriteLine("You choose Single Player. Best of 3 wins. GO!");
-                    SinglePlayer();
-                    break;
-                case "2":
-                    Console.WriteLine("You choose 2 Player. Best of 3 wins. GO!");
-                    TwoPlayer();
-                    break;
-                default:
-                    Console.WriteLine("Invalid Option. Please Enter '1' or '2'");
-                    Versus();
-                    break;
-            }
-
-        }
-
-        public void SinglePlayer()
-        {
-            Console.WriteLine("Enter 'r' for Rock, 'p' for Paper, 'z' for Scissors, 'l' for Lizard, 'k' for Spock");
-            string userPick = Console.ReadLine();
-        }
-
-        public void TwoPlayer()
-        {
-
-        }
-
-        public void AiChoice()
-        {
-
+            Game game = new Game();
+            game.Versus();
         }
     }
 }
