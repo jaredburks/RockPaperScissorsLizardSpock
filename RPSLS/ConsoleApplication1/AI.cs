@@ -11,6 +11,7 @@ namespace ConsoleApplication1
         public AI(string name)
         {
             this.name = name;
+            wins = 0;
         }
         public override int PlayerPick()
         {

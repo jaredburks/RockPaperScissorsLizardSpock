@@ -48,10 +48,33 @@ namespace ConsoleApplication1
         {
             Human player1 = new Human("Player1");
             AI player2 = new AI("CPU");
-            int firstPick = player1.PlayerPick();
-            int secondPick = player2.PlayerPick();
+            int round = 1;
 
+            while (player1.wins < 2 || player2.wins < 2)
+            {
+                Console.WriteLine("Round: " + round);
+                int firstPick = player1.PlayerPick();
+                int secondPick = player2.PlayerPick();
 
+                if (firstPick == secondPick)
+                {
+                    Console.WriteLine("DRAW! REDO ROUND");
+                }
+                else if (firstPick == 1) //If Player1 picks rock
+                {
+                    if (secondPick == 3 || secondPick == 4) //WIN Scenario
+                    {
+                        Console.WriteLine(player1.name + " Wins this round!");
+                        Console.WriteLine(player1.name + " Chose " + firstPick);
+                        Console.WriteLine(player2.name + " Chose " + secondPick);
+                        player1.wins++;
+                    }
+                    else //Lose Scenario
+                    {
+
+                    }
+                }
+            }
         }
     }
 }

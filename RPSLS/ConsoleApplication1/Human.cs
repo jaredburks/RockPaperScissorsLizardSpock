@@ -11,6 +11,7 @@ namespace ConsoleApplication1
         public Human(string name)
         {
             this.name = name;
+            wins = 0;
         }
         public int PlayerPick()
         {

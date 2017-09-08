@@ -9,6 +9,7 @@ namespace ConsoleApplication1
     class Player
     {
         public string name;
+        public int wins;
         public virtual int PlayerPick()
         {
             Console.WriteLine("Enter '1' for Rock, '2' for Paper, '3' for Scissors, '4' for Lizard, '5' for Spock");
