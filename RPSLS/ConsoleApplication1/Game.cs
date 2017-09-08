@@ -29,7 +29,7 @@ namespace ConsoleApplication1
                 case "1":
                     Console.WriteLine("You chose Single Player. Best of 3 wins. GO!");
                     //TODO: Call fucnction
-
+                    PlayerAiMatch();
                     break;
                 case "2":
                     Console.WriteLine("You chose 2 Player. Best of 3 wins. GO!");
@@ -41,17 +41,17 @@ namespace ConsoleApplication1
                     Versus();
                     break;
             }
-
         }
 
         public void PlayerAiMatch()
         {
             Human player1 = new Human("Player1");
             AI player2 = new AI("CPU");
-            int round = 1;
+            int round = 0;
 
             while (player1.wins < 2 || player2.wins < 2)
             {
+                round++;
                 Console.WriteLine("Round: " + round);
                 int firstPick = player1.PlayerPick();
                 int secondPick = player2.PlayerPick();
@@ -59,6 +59,7 @@ namespace ConsoleApplication1
                 if (firstPick == secondPick)
                 {
                     Console.WriteLine("DRAW! REDO ROUND");
+                    round--;
                 }
                 else if (firstPick == 1) //If Player1 picks rock
                 {
@@ -71,7 +72,78 @@ namespace ConsoleApplication1
                     }
                     else //Lose Scenario
                     {
-
+                        Console.WriteLine(player2.name + " Wins this round!");
+                        Console.WriteLine(player1.name + " Chose " + firstPick);
+                        Console.WriteLine(player2.name + " Chose " + secondPick);
+                        player2.wins++;
+                    }
+                }
+                else if (firstPick == 2) //If Player1 picks paper
+                {
+                    if (secondPick == 1 || secondPick == 5) //WIN Scenario
+                    {
+                        Console.WriteLine(player1.name + " Wins this round!");
+                        Console.WriteLine(player1.name + " Chose " + firstPick);
+                        Console.WriteLine(player2.name + " Chose " + secondPick);
+                        player1.wins++;
+                    }
+                    else //Lose Scenario
+                    {
+                        Console.WriteLine(player2.name + " Wins this round!");
+                        Console.WriteLine(player1.name + " Chose " + firstPick);
+                        Console.WriteLine(player2.name + " Chose " + secondPick);
+                        player2.wins++;
+                    }
+                }
+                else if (firstPick == 3) //If Player1 picks scissors
+                {
+                    if (secondPick == 2 || secondPick == 4) //WIN Scenario
+                    {
+                        Console.WriteLine(player1.name + " Wins this round!");
+                        Console.WriteLine(player1.name + " Chose " + firstPick);
+                        Console.WriteLine(player2.name + " Chose " + secondPick);
+                        player1.wins++;
+                    }
+                    else //Lose Scenario
+                    {
+                        Console.WriteLine(player2.name + " Wins this round!");
+                        Console.WriteLine(player1.name + " Chose " + firstPick);
+                        Console.WriteLine(player2.name + " Chose " + secondPick);
+                        player2.wins++;
+                    }
+                }
+                else if (firstPick == 4) //If Player1 picks lizard
+                {
+                    if (secondPick == 2 || secondPick == 5) //WIN Scenario
+                    {
+                        Console.WriteLine(player1.name + " Wins this round!");
+                        Console.WriteLine(player1.name + " Chose " + firstPick);
+                        Console.WriteLine(player2.name + " Chose " + secondPick);
+                        player1.wins++;
+                    }
+                    else //Lose Scenario
+                    {
+                        Console.WriteLine(player2.name + " Wins this round!");
+                        Console.WriteLine(player1.name + " Chose " + firstPick);
+                        Console.WriteLine(player2.name + " Chose " + secondPick);
+                        player2.wins++;
+                    }
+                }
+                else if (firstPick == 5) //If Player1 picks Spock
+                {
+                    if (secondPick == 1 || secondPick == 3) //WIN Scenario
+                    {
+                        Console.WriteLine(player1.name + " Wins this round!");
+                        Console.WriteLine(player1.name + " Chose " + firstPick);
+                        Console.WriteLine(player2.name + " Chose " + secondPick);
+                        player1.wins++;
+                    }
+                    else //Lose Scenario
+                    {
+                        Console.WriteLine(player2.name + " Wins this round!");
+                        Console.WriteLine(player1.name + " Chose " + firstPick);
+                        Console.WriteLine(player2.name + " Chose " + secondPick);
+                        player2.wins++;
                     }
                 }
             }
