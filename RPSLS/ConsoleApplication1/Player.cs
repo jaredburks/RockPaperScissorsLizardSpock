@@ -12,7 +12,7 @@ namespace ConsoleApplication1
         public int wins = 0;
         public virtual int PlayerPick()
         {
-            Console.WriteLine("Enter '1' for Rock, '2' for Paper, '3' for Scissors, '4' for Lizard, '5' for Spock");
+            Console.WriteLine("Enter '1' for Rock, '2' for Paper, '3' for Scissors, '4' for Lizard, '5' for Spock\n");
             int userPick = 0;
             try
             {
