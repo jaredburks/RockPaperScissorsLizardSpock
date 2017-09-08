@@ -14,7 +14,7 @@ namespace ConsoleApplication1
         }
         public override int PlayerPick()
         {
-            Random num = new Random(1);
+            Random num = new Random();
             int aiPick = num.Next(1, 6); //>= 1 and < 6. 1-Rock, 2-Paper, 3-Scissors, 4-Lizard, 5-Spock.
             return aiPick;
         }
