@@ -49,7 +49,7 @@ namespace ConsoleApplication1
             AI player2 = new AI("CPU");
             int round = 0;
 
-            while (player1.wins < 2 || player2.wins < 2)
+            while (player1.wins < 2 && player2.wins < 2)
             {
                 round++;
                 Console.WriteLine("Round: " + round);
@@ -146,6 +146,16 @@ namespace ConsoleApplication1
                         player2.wins++;
                     }
                 }
+            }
+            if (player1.wins == 2)
+            {
+                Console.WriteLine(player1.name + " WINS THE MATCH!\n" + round + " Rounds were played.");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine(player2.name + " WINS THE MATCH!\n" + round + " Rounds were played.");
+                Console.ReadLine();
             }
         }
     }
