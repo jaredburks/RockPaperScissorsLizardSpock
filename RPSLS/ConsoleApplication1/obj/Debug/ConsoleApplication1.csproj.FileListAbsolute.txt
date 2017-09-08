@@ -1,1 +1,2 @@
 c:\users\jared\documents\visual studio 2015\Projects\RPSLS\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\Jared\Documents\Visual Studio 2015\Projects\RockPaperScissorsLizardSpock\RPSLS\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
