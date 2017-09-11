@@ -8,7 +8,8 @@ namespace ConsoleApplication1
 {
     class Game
     {
-        public void Versus()//Switch case to handle player vs AI or player vs player
+        List<string> list = new List<string>(new string[] { "rock", "paper", "scissors", "lizard", "Spock" });
+        public void Versus()
         {
             Console.WriteLine("Rock Paper Scissors Lizard Spock!");
             Console.WriteLine("Rules:");
@@ -47,16 +48,16 @@ namespace ConsoleApplication1
         public void FirstPlayerWin(Player player1, Player player2, int firstPick, int secondPick)
         {
             Console.WriteLine(player1.name + " Wins this round!");
-            Console.WriteLine(player1.name + " Chose " + firstPick);
-            Console.WriteLine(player2.name + " Chose " + secondPick + "\n");
+            Console.WriteLine(player1.name + " Chose " + $"{list[firstPick - 1]}");
+            Console.WriteLine(player2.name + " Chose " + $"{list[secondPick - 1]}" + "\n");
             player1.wins++;
         }
 
         public void FirstPlayerLose(Player player1, Player player2, int firstPick, int secondPick)
         {
             Console.WriteLine(player2.name + " Wins this round!");
-            Console.WriteLine(player1.name + " Chose " + firstPick);
-            Console.WriteLine(player2.name + " Chose " + secondPick + "\n");
+            Console.WriteLine(player1.name + " Chose " + $"{list[firstPick - 1]}");
+            Console.WriteLine(player2.name + " Chose " + $"{list[secondPick - 1]}" + "\n");
             player2.wins++;
         }
 
@@ -92,55 +93,55 @@ namespace ConsoleApplication1
                 }
                 else if (firstPick == 1) //If Player1 picks rock
                 {
-                    if (secondPick == 3 || secondPick == 4) //WIN Scenario
+                    if (secondPick == 3 || secondPick == 4)
                     {
                         FirstPlayerWin(player1, player2, firstPick, secondPick);
                     }
-                    else //Lose Scenario
+                    else
                     {
                         FirstPlayerLose(player1, player2, firstPick, secondPick);
                     }
                 }
                 else if (firstPick == 2) //If Player1 picks paper
                 {
-                    if (secondPick == 1 || secondPick == 5) //WIN Scenario
+                    if (secondPick == 1 || secondPick == 5)
                     {
                         FirstPlayerWin(player1, player2, firstPick, secondPick);
                     }
-                    else //Lose Scenario
+                    else
                     {
                         FirstPlayerLose(player1, player2, firstPick, secondPick);
                     }
                 }
                 else if (firstPick == 3) //If Player1 picks scissors
                 {
-                    if (secondPick == 2 || secondPick == 4) //WIN Scenario
+                    if (secondPick == 2 || secondPick == 4)
                     {
                         FirstPlayerWin(player1, player2, firstPick, secondPick);
                     }
-                    else //Lose Scenario
+                    else
                     {
                         FirstPlayerLose(player1, player2, firstPick, secondPick);
                     }
                 }
                 else if (firstPick == 4) //If Player1 picks lizard
                 {
-                    if (secondPick == 2 || secondPick == 5) //WIN Scenario
+                    if (secondPick == 2 || secondPick == 5)
                     {
                         FirstPlayerWin(player1, player2, firstPick, secondPick);
                     }
-                    else //Lose Scenario
+                    else
                     {
                         FirstPlayerLose(player1, player2, firstPick, secondPick);
                     }
                 }
                 else if (firstPick == 5) //If Player1 picks Spock
                 {
-                    if (secondPick == 1 || secondPick == 3) //WIN Scenario
+                    if (secondPick == 1 || secondPick == 3)
                     {
                         FirstPlayerWin(player1, player2, firstPick, secondPick);
                     }
-                    else //Lose Scenario
+                    else
                     {
                         FirstPlayerLose(player1, player2, firstPick, secondPick);
                     }

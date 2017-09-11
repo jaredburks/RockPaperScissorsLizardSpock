@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//This will be the parent class for human user and AI user
+//This is the parent class for human user and AI
 namespace ConsoleApplication1
 {
     class Player

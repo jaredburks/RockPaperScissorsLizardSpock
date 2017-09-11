@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//This class will take AI input. Child of Player class
+//This class will take AI input.
 namespace ConsoleApplication1
 {
     class AI : Player
