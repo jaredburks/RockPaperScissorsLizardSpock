@@ -9,7 +9,14 @@ namespace ConsoleApplication1
     class Game
     {
         List<string> list = new List<string>(new string[] { "rock", "paper", "scissors", "lizard", "Spock" });
-        public void Versus()
+        string enterName;
+        string secondPlayerName;
+        Player player1 = new Player();
+        Player player2 = new Player();
+        int round = 0;
+        bool pvp;
+
+        public void Rules()
         {
             Console.WriteLine("Rock Paper Scissors Lizard Spock!");
             Console.WriteLine("Rules:");
@@ -24,8 +31,12 @@ namespace ConsoleApplication1
             Console.WriteLine("Spock vaporizes Rock");
             Console.WriteLine("And as it always has Rock crushes Scissors");
             Console.WriteLine("\nEnter '1' For Single Player, '2' For 2 Player");
-            bool pvp;
+        }
+        public void Versus()
+        {
+            Rules();
             string option = Console.ReadLine();
+
             switch (option)
             {
                 case "1":
@@ -45,7 +56,7 @@ namespace ConsoleApplication1
             }
         }
 
-        public void FirstPlayerWin(Player player1, Player player2, int firstPick, int secondPick)
+        public void FirstPlayerWin(int firstPick, int secondPick)
         {
             Console.WriteLine(player1.name + " Wins this round!");
             Console.WriteLine(player1.name + " Chose " + $"{list[firstPick - 1]}");
@@ -53,32 +64,51 @@ namespace ConsoleApplication1
             player1.wins++;
         }
 
-        public void FirstPlayerLose(Player player1, Player player2, int firstPick, int secondPick)
+        public void FirstPlayerLose(int firstPick, int secondPick)
         {
             Console.WriteLine(player2.name + " Wins this round!");
             Console.WriteLine(player1.name + " Chose " + $"{list[firstPick - 1]}");
             Console.WriteLine(player2.name + " Chose " + $"{list[secondPick - 1]}" + "\n");
             player2.wins++;
         }
-
-        public void StartMatch(bool pvp)
+        public void Player1Name()
         {
             Console.WriteLine("Player 1 please enter your name.");
-            string enterName = Console.ReadLine();
-            Human player1 = new Human(enterName);
-            Player player2 = new Player();
-            int round = 0;
+            enterName = Console.ReadLine();
+            player1 = new Human(enterName);
+        }
 
+        public void Player2Name()
+        {
             if (pvp == true)
             {
                 Console.WriteLine("Player 2 please enter your name.");
-                string player2name = Console.ReadLine();
-                player2 = new Human(player2name);
+                secondPlayerName = Console.ReadLine();
+                player2 = new Human(secondPlayerName);
             }
             else
             {
                 player2 = new AI("CPU");
             }
+        }
+
+        public void DecideWinner()
+        {
+            if (player1.wins == 2)
+            {
+                Console.WriteLine("\n" + player1.name + " WINS THE MATCH!\n" + round + " Rounds were played.");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("\n" + player2.name + " WINS THE MATCH!\n" + round + " Rounds were played.");
+                Console.ReadLine();
+            }
+        }
+        public void StartMatch(bool pvp)
+        {
+            Player1Name();
+            Player2Name();
 
             while (player1.wins < 2 && player2.wins < 2)
             {
@@ -96,68 +126,59 @@ namespace ConsoleApplication1
                 {
                     if (secondPick == 3 || secondPick == 4)
                     {
-                        FirstPlayerWin(player1, player2, firstPick, secondPick);
+                        FirstPlayerWin(firstPick, secondPick);
                     }
                     else
                     {
-                        FirstPlayerLose(player1, player2, firstPick, secondPick);
+                        FirstPlayerLose(firstPick, secondPick);
                     }
                 }
                 else if (firstPick == 2) //If Player1 picks paper
                 {
                     if (secondPick == 1 || secondPick == 5)
                     {
-                        FirstPlayerWin(player1, player2, firstPick, secondPick);
+                        FirstPlayerWin(firstPick, secondPick);
                     }
                     else
                     {
-                        FirstPlayerLose(player1, player2, firstPick, secondPick);
+                        FirstPlayerLose(firstPick, secondPick);
                     }
                 }
                 else if (firstPick == 3) //If Player1 picks scissors
                 {
                     if (secondPick == 2 || secondPick == 4)
                     {
-                        FirstPlayerWin(player1, player2, firstPick, secondPick);
+                        FirstPlayerWin(firstPick, secondPick);
                     }
                     else
                     {
-                        FirstPlayerLose(player1, player2, firstPick, secondPick);
+                        FirstPlayerLose(firstPick, secondPick);
                     }
                 }
                 else if (firstPick == 4) //If Player1 picks lizard
                 {
                     if (secondPick == 2 || secondPick == 5)
                     {
-                        FirstPlayerWin(player1, player2, firstPick, secondPick);
+                        FirstPlayerWin(firstPick, secondPick);
                     }
                     else
                     {
-                        FirstPlayerLose(player1, player2, firstPick, secondPick);
+                        FirstPlayerLose(firstPick, secondPick);
                     }
                 }
                 else if (firstPick == 5) //If Player1 picks Spock
                 {
                     if (secondPick == 1 || secondPick == 3)
                     {
-                        FirstPlayerWin(player1, player2, firstPick, secondPick);
+                        FirstPlayerWin(firstPick, secondPick);
                     }
                     else
                     {
-                        FirstPlayerLose(player1, player2, firstPick, secondPick);
+                        FirstPlayerLose(firstPick, secondPick);
                     }
                 }
             }
-            if (player1.wins == 2)
-            {
-                Console.WriteLine("\n" + player1.name + " WINS THE MATCH!\n" + round + " Rounds were played.");
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine("\n" + player2.name + " WINS THE MATCH!\n" + round + " Rounds were played.");
-                Console.ReadLine();
-            }
+            DecideWinner();
         }
     }
 }
