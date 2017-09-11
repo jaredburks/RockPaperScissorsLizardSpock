@@ -15,6 +15,8 @@ namespace ConsoleApplication1
         Player player2 = new Player();
         int round = 0;
         bool pvp;
+        int firstPick;
+        int secondPick;
 
         public void Rules()
         {
@@ -105,6 +107,70 @@ namespace ConsoleApplication1
                 Console.ReadLine();
             }
         }
+
+        public void ComparePicks()
+        {
+            if (firstPick == secondPick)
+            {
+                Console.WriteLine("DRAW! REDO ROUND\n");
+                round--;
+            }
+            else if (firstPick == 1) //If Player1 picks rock
+            {
+                if (secondPick == 3 || secondPick == 4)
+                {
+                    FirstPlayerWin(firstPick, secondPick);
+                }
+                else
+                {
+                    FirstPlayerLose(firstPick, secondPick);
+                }
+            }
+            else if (firstPick == 2) //If Player1 picks paper
+            {
+                if (secondPick == 1 || secondPick == 5)
+                {
+                    FirstPlayerWin(firstPick, secondPick);
+                }
+                else
+                {
+                    FirstPlayerLose(firstPick, secondPick);
+                }
+            }
+            else if (firstPick == 3) //If Player1 picks scissors
+            {
+                if (secondPick == 2 || secondPick == 4)
+                {
+                    FirstPlayerWin(firstPick, secondPick);
+                }
+                else
+                {
+                    FirstPlayerLose(firstPick, secondPick);
+                }
+            }
+            else if (firstPick == 4) //If Player1 picks lizard
+            {
+                if (secondPick == 2 || secondPick == 5)
+                {
+                    FirstPlayerWin(firstPick, secondPick);
+                }
+                else
+                {
+                    FirstPlayerLose(firstPick, secondPick);
+                }
+            }
+            else if (firstPick == 5) //If Player1 picks Spock
+            {
+                if (secondPick == 1 || secondPick == 3)
+                {
+                    FirstPlayerWin(firstPick, secondPick);
+                }
+                else
+                {
+                    FirstPlayerLose(firstPick, secondPick);
+                }
+            }
+        }
         public void StartMatch(bool pvp)
         {
             Player1Name();
@@ -114,69 +180,10 @@ namespace ConsoleApplication1
             {
                 round++;
                 Console.WriteLine("Round: " + round + "\n");
-                int firstPick = player1.PlayerPick();
-                int secondPick = player2.PlayerPick();
+                firstPick = player1.PlayerPick();
+                secondPick = player2.PlayerPick();
 
-                if (firstPick == secondPick)
-                {
-                    Console.WriteLine("DRAW! REDO ROUND\n");
-                    round--;
-                }
-                else if (firstPick == 1) //If Player1 picks rock
-                {
-                    if (secondPick == 3 || secondPick == 4)
-                    {
-                        FirstPlayerWin(firstPick, secondPick);
-                    }
-                    else
-                    {
-                        FirstPlayerLose(firstPick, secondPick);
-                    }
-                }
-                else if (firstPick == 2) //If Player1 picks paper
-                {
-                    if (secondPick == 1 || secondPick == 5)
-                    {
-                        FirstPlayerWin(firstPick, secondPick);
-                    }
-                    else
-                    {
-                        FirstPlayerLose(firstPick, secondPick);
-                    }
-                }
-                else if (firstPick == 3) //If Player1 picks scissors
-                {
-                    if (secondPick == 2 || secondPick == 4)
-                    {
-                        FirstPlayerWin(firstPick, secondPick);
-                    }
-                    else
-                    {
-                        FirstPlayerLose(firstPick, secondPick);
-                    }
-                }
-                else if (firstPick == 4) //If Player1 picks lizard
-                {
-                    if (secondPick == 2 || secondPick == 5)
-                    {
-                        FirstPlayerWin(firstPick, secondPick);
-                    }
-                    else
-                    {
-                        FirstPlayerLose(firstPick, secondPick);
-                    }
-                }
-                else if (firstPick == 5) //If Player1 picks Spock
-                {
-                    if (secondPick == 1 || secondPick == 3)
-                    {
-                        FirstPlayerWin(firstPick, secondPick);
-                    }
-                    else
-                    {
-                        FirstPlayerLose(firstPick, secondPick);
-                    }
-                }
+                ComparePicks();
             }
             DecideWinner();
         }
