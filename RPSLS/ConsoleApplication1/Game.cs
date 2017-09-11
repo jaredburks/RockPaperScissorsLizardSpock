@@ -23,18 +23,19 @@ namespace ConsoleApplication1
             Console.WriteLine("Spock vaporizes Rock");
             Console.WriteLine("And as it always has Rock crushes Scissors");
             Console.WriteLine("\nEnter '1' For Single Player, '2' For 2 Player");
+            bool pvp;
             string option = Console.ReadLine();
             switch (option)
             {
                 case "1":
                     Console.WriteLine("You chose Single Player. Best of 3 wins. GO!");
-                    //TODO: Call fucnction
-                    PlayerAiMatch();
+                    pvp = false;
+                    StartMatch(pvp);
                     break;
                 case "2":
                     Console.WriteLine("You chose 2 Player. Best of 3 wins. GO!");
-                    //TODO: Call fucnction
-
+                    pvp = true;
+                    StartMatch(pvp);
                     break;
                 default:
                     Console.WriteLine("Invalid Option. Please Enter '1' or '2'");
@@ -59,10 +60,18 @@ namespace ConsoleApplication1
             player2.wins++;
         }
 
-        public void PlayerAiMatch()
+        public void StartMatch(bool pvp)
         {
             Human player1 = new Human("Player1");
-            AI player2 = new AI("CPU");
+            Player player2 = new Player();
+            if(pvp == true)
+            {
+                player2 = new Human("Player2");
+            }
+            else
+            {
+                player2 = new AI("CPU");
+            }
             int round = 0;
 
             while (player1.wins < 2 && player2.wins < 2)

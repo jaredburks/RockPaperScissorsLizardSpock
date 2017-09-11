@@ -12,7 +12,7 @@ namespace ConsoleApplication1
         public int wins = 0;
         public virtual int PlayerPick()
         {
-            Console.WriteLine("Enter '1' for Rock, '2' for Paper, '3' for Scissors, '4' for Lizard, '5' for Spock\n");
+            Console.WriteLine(name + " Enter '1' for Rock, '2' for Paper, '3' for Scissors, '4' for Lizard, '5' for Spock\n");
             int userPick = 0;
             try
             {
@@ -21,7 +21,8 @@ namespace ConsoleApplication1
             catch (FormatException)
             {
                 Console.WriteLine(name + " Please Enter a valid option.");
-                PlayerPick();
+                userPick = PlayerPick();
+                return userPick;
             }
             if (userPick == 1 || userPick == 2 || userPick == 3 || userPick == 4 || userPick == 5)
             {
