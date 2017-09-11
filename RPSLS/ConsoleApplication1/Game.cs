@@ -62,11 +62,15 @@ namespace ConsoleApplication1
 
         public void StartMatch(bool pvp)
         {
-            Human player1 = new Human("Player1");
+            Console.WriteLine("Player 1 please enter your name.");
+            string enterName = Console.ReadLine();
+            Human player1 = new Human(enterName);
             Player player2 = new Player();
             if(pvp == true)
             {
-                player2 = new Human("Player2");
+                Console.WriteLine("Player 2 please enter your name.");
+                string player2name = Console.ReadLine();
+                player2 = new Human(player2name);
             }
             else
             {
