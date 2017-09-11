@@ -67,7 +67,9 @@ namespace ConsoleApplication1
             string enterName = Console.ReadLine();
             Human player1 = new Human(enterName);
             Player player2 = new Player();
-            if(pvp == true)
+            int round = 0;
+
+            if (pvp == true)
             {
                 Console.WriteLine("Player 2 please enter your name.");
                 string player2name = Console.ReadLine();
@@ -77,7 +79,6 @@ namespace ConsoleApplication1
             {
                 player2 = new AI("CPU");
             }
-            int round = 0;
 
             while (player1.wins < 2 && player2.wins < 2)
             {
