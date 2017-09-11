@@ -8,9 +8,9 @@ namespace ConsoleApplication1
 {
     class Human : Player
     {
-        public Human(string name)
+        public Human()
         {
-            this.name = name;
+            name = Console.ReadLine();
         }
     }
 }

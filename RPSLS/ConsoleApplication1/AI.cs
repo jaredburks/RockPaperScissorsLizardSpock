@@ -8,9 +8,9 @@ namespace ConsoleApplication1
 {
     class AI : Player
     {
-        public AI(string name)
+        public AI()
         {
-            this.name = name;
+            name = "CPU";
         }
         public override int PlayerPick()
         {

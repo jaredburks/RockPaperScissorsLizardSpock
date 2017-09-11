@@ -9,12 +9,9 @@ namespace ConsoleApplication1
     class Game
     {
         List<string> list = new List<string>(new string[] { "rock", "paper", "scissors", "lizard", "Spock" });
-        string enterName;
-        string secondPlayerName;
-        Player player1 = new Player();
-        Player player2 = new Player();
+        Player player1;
+        Player player2;
         int round = 0;
-        bool pvp;
         int firstPick;
         int secondPick;
 
@@ -42,14 +39,19 @@ namespace ConsoleApplication1
             switch (option)
             {
                 case "1":
-                    Console.WriteLine("You chose Single Player. Best of 3 wins. GO!");
-                    pvp = false;
-                    StartMatch(pvp);
+                    Console.WriteLine("You chose Single Player (VS CPU). Best of 3 wins. GO!");
+                    Console.WriteLine("Player 1 please enter your name.");
+                    player1 = new Human();
+                    player2 = new AI();
+                    StartMatch();
                     break;
                 case "2":
                     Console.WriteLine("You chose 2 Player. Best of 3 wins. GO!");
-                    pvp = true;
-                    StartMatch(pvp);
+                    Console.WriteLine("Player 1 please enter your name.");
+                    player1 = new Human();
+                    Console.WriteLine("Player 2 please enter your name.");
+                    player2 = new Human();
+                    StartMatch();
                     break;
                 default:
                     Console.WriteLine("Invalid Option. Please Enter '1' or '2'");
@@ -72,26 +74,6 @@ namespace ConsoleApplication1
             Console.WriteLine(player1.name + " Chose " + $"{list[firstPick - 1]}");
             Console.WriteLine(player2.name + " Chose " + $"{list[secondPick - 1]}" + "\n");
             player2.wins++;
-        }
-        public void Player1Name()
-        {
-            Console.WriteLine("Player 1 please enter your name.");
-            enterName = Console.ReadLine();
-            player1 = new Human(enterName);
-        }
-
-        public void Player2Name()
-        {
-            if (pvp == true)
-            {
-                Console.WriteLine("Player 2 please enter your name.");
-                secondPlayerName = Console.ReadLine();
-                player2 = new Human(secondPlayerName);
-            }
-            else
-            {
-                player2 = new AI("CPU");
-            }
         }
 
         public void DecideWinner()
@@ -171,18 +153,14 @@ namespace ConsoleApplication1
                 }
             }
         }
-        public void StartMatch(bool pvp)
+        public void StartMatch()
         {
-            Player1Name();
-            Player2Name();
-
             while (player1.wins < 2 && player2.wins < 2)
             {
                 round++;
                 Console.WriteLine("Round: " + round + "\n");
                 firstPick = player1.PlayerPick();
                 secondPick = player2.PlayerPick();
-
                 ComparePicks();
             }
             DecideWinner();
